@@ -9,7 +9,6 @@
  * This file is used to read the configuration file.
  */
 function read_config() {
-    ini_set("display_errors", E_ALL);
     $config = parse_ini_file("config.ini", true);
     if ($config === false) {
         die("Error: Cannot read configuration file.");

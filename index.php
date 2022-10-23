@@ -1,5 +1,9 @@
 <?php
 include_once "./conf/entry.php";
+$res = mysqli_query($con, "SELECT COUNT(*) FROM `usr`");
+if (!$res) die("Error: Cannot get user count.");
+$row = mysqli_fetch_row($res);
+$user_count = $row[0];
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $locale; ?>" data-theme="light" data-sidebar-behaviour="fixed" data-navigation-color="default" data-is-fluid="true">
@@ -146,64 +150,59 @@ include_once "./conf/entry.php";
                                 <path class="a" d="M17.25,23.25H3.75a1.5,1.5,0,0,1-1.5-1.5V5.25" />
                                 <rect class="a" x="5.25" y="0.75" width="16.5" height="19.5" rx="1" ry="1" />
                             </svg>
-                            <span>Pages</span>
+                            <span><?php echo $problems; ?></span>
                         </a>
                         <div class="collapse " id="pagesCollapse">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a href="./account.html" class="nav-link ">
-                                        Account
+                                    <a href="/problemset/" class="nav-link ">
+                                        <?php echo $problems; ?>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./user.html" class="nav-link ">
-                                        User
+                                    <a href="/problemset/my.php" class="nav-link ">
+                                        <?php echo $myproblems; ?>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./pricing.html" class="nav-link ">
-                                        Pricing
+                                    <a href="/problemset/store.php" class="nav-link ">
+                                        <?php echo $probstore; ?>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./wizard.html" class="nav-link ">
-                                        Wizard
+                                    <a href="/problemset/qsubmit.php" class="nav-link ">
+                                        <?php echo $qsubmit; ?>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./help-center.html" class="nav-link ">
-                                        Help Center
+                                    <a href="/problemset/submissions.php" class="nav-link ">
+                                        <?php echo $submissions; ?>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./invoice.html" class="nav-link ">
-                                        Invoice
+                                    <a href="/problemset/hack.php" class="nav-link ">
+                                        <?php echo $hack; ?>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./api-keys.html" class="nav-link ">
-                                        API Keys
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./maintenance.html" class="nav-link ">
-                                        Maintenance
+                                    <a href="/problemset/apikeys.php" class="nav-link ">
+                                        <?php echo $prob_apikeys; ?>
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="./chat.html">
+                        <a class="nav-link " href="/discussions/">
                             <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.25,18.75a1.5,1.5,0,0,1-1.5-1.5V9.75a1.5,1.5,0,0,1,1.5-1.5h10.5a1.5,1.5,0,0,1,1.5,1.5v7.5a1.5,1.5,0,0,1-1.5,1.5h-1.5v4.5l-4.5-4.5Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
                                 <path d="M6.75,12.75l-3,3v-4.5H2.25a1.5,1.5,0,0,1-1.5-1.5V2.25A1.5,1.5,0,0,1,2.25.75h10.5a1.5,1.5,0,0,1,1.5,1.5v3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
                             </svg>
-                            <span>Chat</span>
+                            <span><?php echo $discuss; ?></span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="./calendar.html">
+                        <a class="nav-link " href="/contest/">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18">
                                 <defs>
                                     <style>
@@ -222,7 +221,7 @@ include_once "./conf/entry.php";
                                 <line class="a" x1="6.752" y1="6" x2="6.752" y2="0.75" />
                                 <line class="a" x1="17.252" y1="6" x2="17.252" y2="0.75" />
                             </svg>
-                            <span>Calendar</span>
+                            <span><?php echo $contests; ?></span>
                         </a>
                     </li>
                     <li class="nav-item dropdown">
@@ -245,19 +244,19 @@ include_once "./conf/entry.php";
                                 <line class="a" x1="8.313" y1="9.975" x2="4.5" y2="13.5" />
                                 <path class="a" d="M22.88,5.014l-9.513,6.56a2.406,2.406,0,0,1-2.734,0L1.12,5.014" />
                             </svg>
-                            <span>Email</span>
+                            <span><?php echo $email; ?></span>
                         </a>
                         <div class="collapse " id="emailCollapse">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a href="./inbox.html" class="nav-link ">
-                                        Inbox
+                                    <a href="/msg/list.php" class="nav-link ">
+                                        <?php echo $inbox; ?>
                                         <span class="badge text-bg-primary badge-circle ms-3">7</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./read-email.html" class="nav-link ">
-                                        Read Email
+                                    <a href="/msg/setting.php" class="nav-link ">
+                                        <?php echo $email_setting; ?>
                                     </a>
                                 </li>
                             </ul>
@@ -277,18 +276,18 @@ include_once "./conf/entry.php";
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.9239 15.505L17.0189 19.379C16.9543 19.4649 16.8721 19.536 16.7776 19.5873C16.6832 19.6387 16.5789 19.6692 16.4717 19.6768C16.3645 19.6844 16.2569 19.6689 16.1562 19.6313C16.0555 19.5937 15.964 19.535 15.8879 19.459L14.3879 17.959" />
                                 </g>
                             </svg>
-                            <span>Tasks</span>
+                            <span><?php echo $tasks; ?></span>
                         </a>
                         <div class="collapse " id="tasksCollapse">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a href="./kanban-board.html" class="nav-link ">
-                                        Kanban Board
+                                    <a href="/tasks/board.php" class="nav-link ">
+                                        <?php echo $tboard; ?>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./task-details.html" class="nav-link ">
-                                        Task Details
+                                    <a href="/tasks/pick.php" class="nav-link ">
+                                        <?php echo $tpick; ?>
                                     </a>
                                 </li>
                             </ul>
@@ -299,8 +298,7 @@ include_once "./conf/entry.php";
                             <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M20.25,9.75v-3a1.5,1.5,0,0,0-1.5-1.5H8.25V3.75a1.5,1.5,0,0,0-1.5-1.5H2.25a1.5,1.5,0,0,0-1.5,1.5v16.3a1.7,1.7,0,0,0,3.336.438l2.351-9.657A1.5,1.5,0,0,1,7.879,9.75H21.75A1.5,1.5,0,0,1,23.2,11.636l-2.2,9A1.5,1.5,0,0,1,19.55,21.75H2.447" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
                             </svg>
-                            <span>File Manager</span>
-                            <span class="badge text-bg-success rounded-pill ms-auto">New</span>
+                            <span><?php echo $groups; ?></span>
                         </a>
                     </li>
                     <li class="nav-item dropdown">
@@ -311,77 +309,29 @@ include_once "./conf/entry.php";
                                 <path stroke="currentColor" stroke-width="1.5" d="M12 16.5C11.7929 16.5 11.625 16.3321 11.625 16.125C11.625 15.9179 11.7929 15.75 12 15.75" />
                                 <path stroke="currentColor" stroke-width="1.5" d="M12 16.5C12.2071 16.5 12.375 16.3321 12.375 16.125C12.375 15.9179 12.2071 15.75 12 15.75" />
                             </svg>
-                            <span>Authentication</span>
+                            <span><?php echo $sas; ?></span>
                         </a>
                         <div class="collapse " id="authenticationCollapse">
                             <ul class="nav flex-column">
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link " href="#authenticationSignUpCollapse" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="authenticationSignUpCollapse">
-                                        Sign up
-                                    </a>
-                                    <div class="collapse " id="authenticationSignUpCollapse">
-                                        <ul class="nav flex-column">
-                                            <li class="nav-item">
-                                                <a href="./sign-up-cover.html" class="nav-link ">
-                                                    Cover
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="./sign-up-illustration.html" class="nav-link ">
-                                                    Illustration
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="./sign-up-basic.html" class="nav-link ">
-                                                    Basic
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link " href="#authenticationSignInCollapse" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="authenticationSignInCollapse">
-                                        Sign In
-                                    </a>
-                                    <div class="collapse " id="authenticationSignInCollapse">
-                                        <ul class="nav flex-column">
-                                            <li class="nav-item">
-                                                <a href="./sign-in-cover.html" class="nav-link ">
-                                                    Cover
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="./sign-in-illustration.html" class="nav-link ">
-                                                    Illustration
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="./sign-in-basic.html" class="nav-link ">
-                                                    Basic
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown">
                                     <a class="nav-link " href="#authenticationResetPasswordCollapse" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="authenticationResetPasswordCollapse">
-                                        Reset Password
+                                        <?php echo $sec; ?>
                                     </a>
                                     <div class="collapse " id="authenticationResetPasswordCollapse">
                                         <ul class="nav flex-column">
                                             <li class="nav-item">
-                                                <a href="./reset-password-cover.html" class="nav-link ">
-                                                    Cover
+                                                <a href="/sas/sec/pwd.php" class="nav-link ">
+                                                    <?php echo $editpwd; ?>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="./reset-password-illustration.html" class="nav-link ">
-                                                    Illustration
+                                                <a href="/sas/sec/usr.php" class="nav-link ">
+                                                    <?php echo $editusr; ?> 
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="./reset-password-basic.html" class="nav-link ">
-                                                    Basic
+                                                <a href="/sas/sec/del.php" class="nav-link ">
+                                                    <?php echo $deleteacc; ?>
                                                 </a>
                                             </li>
                                         </ul>
@@ -389,75 +339,27 @@ include_once "./conf/entry.php";
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link " href="#authenticationEmailVerificationCollapse" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="authenticationEmailVerificationCollapse">
-                                        Email Verification
+                                        <?php echo $psecrets; ?>
                                     </a>
                                     <div class="collapse " id="authenticationEmailVerificationCollapse">
                                         <ul class="nav flex-column">
                                             <li class="nav-item">
-                                                <a href="./email-verification-cover.html" class="nav-link ">
-                                                    Cover
+                                                <a href="/sas/psc/email.php" class="nav-link ">
+                                                    <?php echo $sec_email; ?>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="./email-verification-illustration.html" class="nav-link ">
-                                                    Illustration
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="./email-verification-basic.html" class="nav-link ">
-                                                    Basic
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link " href="#authentication2StepVerificationCollapse" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="authentication2StepVerificationCollapse">
-                                        2-step Verification
-                                    </a>
-                                    <div class="collapse " id="authentication2StepVerificationCollapse">
-                                        <ul class="nav flex-column">
-                                            <li class="nav-item">
-                                                <a href="./2-step-verification-cover.html" class="nav-link ">
-                                                    Cover
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="./2-step-verification-illustration.html" class="nav-link ">
-                                                    Illustration
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="./2-step-verification-basic.html" class="nav-link ">
-                                                    Basic
+                                                <a href="/sas/psc/phone.php" class="nav-link ">
+                                                    <?php echo $sec_phone; ?>
                                                 </a>
                                             </li>
                                         </ul>
                                     </div>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link dropdown " href="#authenticationErrorCollapse" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="authenticationErrorCollapse">
-                                        Error
+                                    <a href="/sas/2fa.php" class="nav-link ">
+                                        <?php echo $_2fa; ?>
                                     </a>
-                                    <div class="collapse " id="authenticationErrorCollapse">
-                                        <ul class="nav flex-column">
-                                            <li class="nav-item">
-                                                <a href="./error-cover.html" class="nav-link ">
-                                                    Cover
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="./error-illustration.html" class="nav-link ">
-                                                    Illustration
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="./error-basic.html" class="nav-link ">
-                                                    Basic
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -465,35 +367,16 @@ include_once "./conf/entry.php";
                     <li class="nav-item w-100">
                         <hr>
                     </li>
-                    <li class="nav-item">
-                        <a href="./docs/index.html" class="nav-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18">
-                                <path d="M22.627 14.87 15 22.5l-3.75.75.75-3.75 7.631-7.63a2.113 2.113 0 0 1 2.991 0l.009.008a2.116 2.116 0 0 1-.004 2.992zM8.246 20.25h-6a1.5 1.5 0 0 1-1.5-1.5V2.25a1.5 1.5 0 0 1 1.5-1.5h15a1.5 1.5 0 0 1 1.5 1.5V9m-10.5-3.75h6m-9 4.5h9m-9 4.5h7.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                            </svg>
-                            <span>Documentation</span>
-                            <span class="badge text-bg-primary rounded-pill ms-auto">v1.0</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="./docs/accordion.html" class="nav-link">
-                            <svg viewBox="0 0 24 24" class="nav-link-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M22.91,6.953,12.7,1.672a1.543,1.543,0,0,0-1.416,0L1.076,6.953a.615.615,0,0,0,0,1.094l10.209,5.281a1.543,1.543,0,0,0,1.416,0L22.91,8.047a.616.616,0,0,0,0-1.094Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                <path d="M.758,12.75l10.527,5.078a1.543,1.543,0,0,0,1.416,0L23.258,12.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                <path d="M.758,17.25l10.527,5.078a1.543,1.543,0,0,0,1.416,0L23.258,17.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                            </svg>
-                            <span>Components</span>
-                        </a>
-                    </li>
                 </ul>
                 <!-- End of Navigation -->
 
                 <!-- Info box -->
                 <div class="help-box rounded-3 py-5 px-4 text-center mt-auto">
                     <img src="https://d33wubrfki0l68.cloudfront.net/87584482299b2cc1ec6f1e31ccfb1d42669f7a7a/4abee/assets/images/illustrations/upgrade-illustration.svg" alt="..." class="img-fluid mb-4" width="160" height="160">
-                    <h6>Upgrade to explore<br> <span class="emphasize">premium</span> features</h6>
+                    <h6><?php echo $ute; ?></h6>
 
                     <!-- Button -->
-                    <a class="btn w-100 btn-sm btn-primary" href="javascript: void(0);">Upgrade to Business</a>
+                    <a class="btn w-100 btn-sm btn-primary" href="javascript: void(0);"><?php echo $utp; ?></a>
                 </div>
             </div>
             <!-- End of Collapse -->
@@ -621,459 +504,14 @@ include_once "./conf/entry.php";
                 <div class="vr bg-gray-700 mx-2 mx-lg-3"></div>
 
                 <!-- Button -->
-                <a class="d-flex align-items-center justify-content-center bg-white rounded-circle shadow-sm mx-1 mx-lg-2 w-40px h-40px position-relative link-secondary" data-bs-toggle="offcanvas" href="#offcanvasNotifications" role="button" aria-controls="offcanvasNotifications">
+                <a class="d-flex align-items-center justify-content-center bg-white rounded-circle shadow-sm mx-1 mx-lg-2 w-40px h-40px position-relative link-secondary" href="/msg/list.php">
                     <svg viewBox="0 0 24 24" height="18" width="18" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10,21.75a2.087,2.087,0,0,0,4.005,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
                         <path d="M12 3L12 0.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
                         <path d="M12,3a7.5,7.5,0,0,1,7.5,7.5c0,7.046,1.5,8.25,1.5,8.25H3s1.5-1.916,1.5-8.25A7.5,7.5,0,0,1,12,3Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
                     </svg>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-danger">
-                        20+<span class="visually-hidden">unread messages</span>
-                    </span>
                 </a>
 
-                <!-- Notifications offcanvas -->
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNotifications" aria-labelledby="offcanvasNotificationsLabel">
-                    <div class="offcanvas-header px-5">
-                        <h3 class="offcanvas-title" id="offcanvasNotificationsLabel">Notifications</h3>
-
-                        <div class="d-flex align-items-start">
-                            <div class="dropdown">
-                                <a href="javascript: void(0);" class="dropdown-toggle no-arrow w-20px h-20px me-2 text-body" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="16" width="16">
-                                        <g>
-                                            <circle cx="3.25" cy="12" r="3.25" style="fill: currentColor" />
-                                            <circle cx="12" cy="12" r="3.25" style="fill: currentColor" />
-                                            <circle cx="20.75" cy="12" r="3.25" style="fill: currentColor" />
-                                        </g>
-                                    </svg>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" href="javascript: void(0);">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="me-2 text-secondary" height="14" width="14">
-                                                <g>
-                                                    <path d="M23.22,2.06a1.49,1.49,0,0,0-2,.59l-8.5,15.43L6.46,11.29a1.5,1.5,0,1,0-2.21,2l7.64,8.34a1.52,1.52,0,0,0,2.42-.29L23.81,4.1A1.5,1.5,0,0,0,23.22,2.06Z" style="fill: currentColor" />
-                                                    <path d="M2.61,14.63a1.5,1.5,0,0,0-2.22,2l4.59,5a1.52,1.52,0,0,0,2.11.09,1.49,1.49,0,0,0,.1-2.12Z" style="fill: currentColor" />
-                                                    <path d="M10.3,13a1.41,1.41,0,0,0,2-.54L16.89,4.1a1.5,1.5,0,1,0-2.62-1.45L9.68,11A1.41,1.41,0,0,0,10.3,13Z" style="fill: currentColor" />
-                                                </g>
-                                            </svg>
-                                            Mark as all read
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="javascript: void(0);">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="me-2 text-secondary" height="14" width="14">
-                                                <g>
-                                                    <path d="M21.5,2.5H2.5a2,2,0,0,0-2,2v3a1,1,0,0,0,1,1h21a1,1,0,0,0,1-1v-3A2,2,0,0,0,21.5,2.5Z" style="fill: currentColor" />
-                                                    <path d="M21.5,10H2.5a1,1,0,0,0-1,1v8.5a2,2,0,0,0,2,2h17a2,2,0,0,0,2-2V11A1,1,0,0,0,21.5,10Zm-6.25,3.5A1.25,1.25,0,0,1,14,14.75H10a1.25,1.25,0,0,1,0-2.5h4A1.25,1.25,0,0,1,15.25,13.5Z" style="fill: currentColor" />
-                                                </g>
-                                            </svg>
-                                            Archive all
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="javascript: void(0);">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="me-2 text-secondary" height="14" width="14">
-                                                <g>
-                                                    <path d="M21,19.5a1,1,0,0,0,0-2A1.5,1.5,0,0,1,19.5,16V11.14a8.65,8.65,0,0,0-.4-2.62l-11,11Z" style="fill: currentColor" />
-                                                    <path d="M14.24,21H9.76a.25.25,0,0,0-.24.22,2.64,2.64,0,0,0,0,.28,2.5,2.5,0,0,0,5,0,2.64,2.64,0,0,0,0-.28A.25.25,0,0,0,14.24,21Z" style="fill: currentColor" />
-                                                    <path d="M1,24a1,1,0,0,0,.71-.28l22-22a1,1,0,0,0,0-1.42,1,1,0,0,0-1.42,0l-5,5A7.31,7.31,0,0,0,13,3.07V1a1,1,0,0,0-2,0V3.07a8,8,0,0,0-6.5,8.07V16A1.5,1.5,0,0,1,3,17.5a1,1,0,0,0,0,2h.09L.29,22.29a1,1,0,0,0,0,1.42A1,1,0,0,0,1,24Z" style="fill: currentColor" />
-                                                </g>
-                                            </svg>
-                                            Disable notifications
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="javascript: void(0);">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="me-2 text-secondary" height="14" width="14">
-                                                <g>
-                                                    <rect x="4.25" y="4.5" width="5.75" height="7.25" rx="1.25" style="fill: currentColor" />
-                                                    <path d="M24,10a3,3,0,0,0-3-3H19V2.5a2,2,0,0,0-2-2H2a2,2,0,0,0-2,2V20a3.5,3.5,0,0,0,3.5,3.5h17A3.5,3.5,0,0,0,24,20ZM3.5,21.5A1.5,1.5,0,0,1,2,20V3a.5.5,0,0,1,.5-.5h14A.5.5,0,0,1,17,3V20a3.51,3.51,0,0,0,.11.87.5.5,0,0,1-.09.44.49.49,0,0,1-.39.19ZM22,20a1.5,1.5,0,0,1-3,0V9.5a.5.5,0,0,1,.5-.5H21a1,1,0,0,1,1,1Z" style="fill: currentColor" />
-                                                    <rect x="12" y="6.05" width="3.5" height="2" rx="0.75" style="fill: currentColor" />
-                                                    <rect x="12" y="10.05" width="3.5" height="2" rx="0.75" style="fill: currentColor" />
-                                                    <rect x="4" y="14.05" width="11.5" height="2" rx="0.75" style="fill: currentColor" />
-                                                    <rect x="4" y="18.05" width="9" height="2" rx="0.75" style="fill: currentColor" />
-                                                </g>
-                                            </svg>
-                                            What's new?
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <!-- Button -->
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                    </div>
-
-                    <div class="offcanvas-body p-0">
-                        <div class="list-group list-group-flush">
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <img src="https://d33wubrfki0l68.cloudfront.net/5dfa4398a7f2beddbcfa617402e193f2f13aaa94/2ecb0/assets/images/profiles/profile-28.jpeg" alt="..." class="avatar-img" width="30" height="30">
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">Daniel</h5>
-                                            <small class="text-muted">10 minutes ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">RE: Email pre-population from external source</p>
-                                            <small class="text-secondary">Not sure if we'll need any further instruction on how to utilise the encoded ID in links from the new email broadcast tool.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <span class="avatar-title text-bg-info-soft">M</span>
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">Mochahost.com</h5>
-                                            <small class="text-muted">14 minutes ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">Customer invoice</p>
-                                            <small class="text-secondary">This is a notice that an invoice has been generated on 05/14/2022.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <img src="https://d33wubrfki0l68.cloudfront.net/f3d8c9fbcd994759c966476a8349d5d053e38964/e7323/assets/images/profiles/profile-26.jpeg" alt="..." class="avatar-img" width="30" height="30">
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">Harry</h5>
-                                            <small class="text-muted">32 minutes ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">Farewell card</p>
-                                            <small class="text-secondary">Hi everyone, thanks to all who have already signed and contributed to Ellie's leaving card.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <img src="https://d33wubrfki0l68.cloudfront.net/0b34af989cce5e54297f16547b3eff1ace44dad5/eb8ea/assets/images/profiles/profile-20.jpeg" alt="..." class="avatar-img" width="30" height="30">
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">Gavin</h5>
-                                            <small class="text-muted">55 minutes ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">Weekly cath up</p>
-                                            <small class="text-secondary">Let's see how your emails performed in the past week.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <img src="https://d33wubrfki0l68.cloudfront.net/b12e43e592a36b25ced24c52bc8ae78595f1f2c6/2ceab/assets/images/profiles/profile-24.jpeg" alt="..." class="avatar-img" width="30" height="30">
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">Pamela - HR</h5>
-                                            <small class="text-muted">1 hour ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">New starter</p>
-                                            <small class="text-secondary">I wanted to introduce Alan to you all, who starts today in the Operations Team as our new Global Payroll & Benefits Manager.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <img src="https://d33wubrfki0l68.cloudfront.net/9f5880fc99a40d5021e5a133fe72f232e3883d3a/c965d/assets/images/profiles/profile-13.jpeg" alt="..." class="avatar-img" width="30" height="30">
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">James</h5>
-                                            <small class="text-muted">2 hours ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">Looking for newsletter analyst</p>
-                                            <small class="text-secondary">Good morning Brian, I hope you can help with the following. I am looking for somebody who can help us create stronger newsletters.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <span class="avatar-title text-bg-primary-soft">S</span>
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">service.paypal.com</h5>
-                                            <small class="text-muted">3 hours ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">You have a Payout!</p>
-                                            <small class="text-secondary">Please note that it may take a little while for this payment to appear in the Activity section of your account.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <span class="avatar-title text-bg-primary-soft">C</span>
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">CookieYes</h5>
-                                            <small class="text-muted">5 hours ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">Welcome to CookieYes!</p>
-                                            <small class="text-secondary">Welcome to CookieYes! Thank you for creating an account with us.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <img src="https://d33wubrfki0l68.cloudfront.net/102e41d9e1988e0849ecfe402b1d46f4efd3574b/8dc2e/assets/images/profiles/profile-12.jpeg" alt="..." class="avatar-img" width="30" height="30">
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">Andrew</h5>
-                                            <small class="text-muted">6 hours ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">Congratulations! - and thank you</p>
-                                            <small class="text-secondary">Thank you so much for continuing to leave no stone unturned in pursuit of new milestones of success.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <img src="https://d33wubrfki0l68.cloudfront.net/ea01948f5a48922378b407c27d2b4e5809ed4949/35ecd/assets/images/profiles/profile-11.jpeg" alt="..." class="avatar-img" width="30" height="30">
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">Helen</h5>
-                                            <small class="text-muted">9 hours ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">Bank Holidays season starts tomorrow</p>
-                                            <small class="text-secondary">Our office will be closed on these days, as it will also be on Friday 6 May.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <img src="https://d33wubrfki0l68.cloudfront.net/eec1f115f0af81936bbe3a4f4a4d043cd3c0e7e4/34439/assets/images/profiles/profile-09.jpeg" alt="..." class="avatar-img" width="30" height="30">
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">Tiffany</h5>
-                                            <small class="text-muted">1 day ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">External meetings and events</p>
-                                            <small class="text-secondary">We have updated our external meeting and events protocol. Please have a look at the office board.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <span class="avatar-title text-bg-danger-soft">II</span>
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">Ionos Info</h5>
-                                            <small class="text-muted">2 days ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">Recommend us to earn attractive commissions</p>
-                                            <small class="text-secondary">Happy with your product or service? Sign up for the IONOS Referral Program to recommend us to your business partners, friends or family. We'll reward you with attractive commissions when they place an order.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <img src="https://d33wubrfki0l68.cloudfront.net/102e41d9e1988e0849ecfe402b1d46f4efd3574b/8dc2e/assets/images/profiles/profile-12.jpeg" alt="..." class="avatar-img" width="30" height="30">
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">Edward</h5>
-                                            <small class="text-muted">3 days ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">Website change request</p>
-                                            <small class="text-secondary">Please add video overlay option to microsite header image</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <span class="avatar-title text-bg-primary">BT</span>
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">Bootstrap Themes</h5>
-                                            <small class="text-muted">3 days ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">[Bootstrap Themes] New order (123456)!</p>
-                                            <small class="text-secondary">You've received the following order from alansmith</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <img src="https://d33wubrfki0l68.cloudfront.net/e83422b2242219796524c41b945eb0a4b4b75dfd/caa0b/assets/images/profiles/profile-08.jpeg" alt="..." class="avatar-img" width="30" height="30">
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">Greg</h5>
-                                            <small class="text-muted">4 days ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">Greg Smith (Jira) 2</p>
-                                            <small class="text-secondary">[JIRA] (WEB-1022) Add Full Width Video Content Block to microsites</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <img src="https://d33wubrfki0l68.cloudfront.net/790b7dd581a3ac4fd0410afad0fb12c6e93c9e7a/b0657/assets/images/profiles/profile-07.jpeg" alt="..." class="avatar-img" width="30" height="30">
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">Michael</h5>
-                                            <small class="text-muted">5 days ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">Hard drive limit</p>
-                                            <small class="text-secondary">Your hard drive is close to its storage cap. Once exceeded, you can't add new items or sync changes.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <span class="avatar-title text-bg-info">RC</span>
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">Rave Coffee</h5>
-                                            <small class="text-muted">6 days ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">It's Double Points - ⏰ 24 hours only</p>
-                                            <small class="text-secondary">Login to your Rave account to place your order and you will automatically earn double points on every $ spent.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="list-group-item list-group-item-action">
-                                <div class="d-flex">
-                                    <div class="avatar avatar-circle avatar-xs me-2">
-                                        <img src="https://d33wubrfki0l68.cloudfront.net/4b8c918c73e2c72876e4bd4ba8c89401bae69d14/5923c/assets/images/profiles/profile-03.jpeg" alt="..." class="avatar-img" width="30" height="30">
-                                    </div>
-
-                                    <div class="d-flex flex-column flex-grow-1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">John</h5>
-                                            <small class="text-muted">7 days ago</small>
-                                        </div>
-
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-1">John Po (Jira)</p>
-                                            <small class="text-secondary">Improving slide arrows and indicators on gift impact, testimonial and victories module</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
                 <!-- Dropdown -->
                 <div class="dropdown">
                     <a href="javascript: void(0);" class="dropdown-toggle no-arrow d-flex align-items-center justify-content-center bg-white rounded-circle shadow-sm mx-1 mx-lg-2 w-40px h-40px link-secondary" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,10">
@@ -1258,7 +696,7 @@ include_once "./conf/entry.php";
                 <div class="dropdown">
                     <a href="javascript: void(0);" class="dropdown-toggle no-arrow d-flex align-items-center justify-content-center bg-white rounded-circle shadow-sm mx-1 mx-lg-2 w-40px h-40px" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,10">
                         <div class="avatar avatar-circle avatar-sm avatar-online">
-                            <img src="https://d33wubrfki0l68.cloudfront.net/053f2dfd0df2f52c41e903a21d177b0b44abc9b1/1282c/assets/images/profiles/profile-06.jpeg" alt="..." class="avatar-img" width="40" height="40">
+                            <img src="https://www.gravatar.com/avatar/<?php echo $gravatar_hash; ?>" alt="..." class="avatar-img" width="40" height="40">
                         </div>
                     </a>
 
@@ -1266,11 +704,11 @@ include_once "./conf/entry.php";
                         <div class="dropdown-item-text">
                             <div class="d-flex align-items-center">
                                 <div class="avatar avatar-sm avatar-circle">
-                                    <img src="https://d33wubrfki0l68.cloudfront.net/053f2dfd0df2f52c41e903a21d177b0b44abc9b1/1282c/assets/images/profiles/profile-06.jpeg" alt="..." class="avatar-img" width="40" height="40">
+                                    <img src="https://www.gravatar.com/avatar/<?php echo $gravatar_hash; ?>" alt="..." class="avatar-img" width="40" height="40">
                                 </div>
                                 <div class="flex-grow-1 ms-3">
-                                    <h4 class="mb-0">Ellie Tucker</h4>
-                                    <p class="card-text">ellie.tucker@dashly.com</p>
+                                    <h4 class="mb-0"><?php echo $seu["privTable"]["name"]; ?></h4>
+                                    <p class="card-text"><?php echo $seu["privTable"]["email"]; ?></p>
                                 </div>
                             </div>
                         </div>
@@ -1280,36 +718,30 @@ include_once "./conf/entry.php";
                         <!-- Dropdown -->
                         <div class="dropdown dropend">
                             <a class="dropdown-item dropdown-toggle" href="javascript: void(0);" id="statusDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="-6,12">
-                                Set status
+                                <?php echo $setStatus; ?>
                             </a>
-
                             <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-sub-menu" aria-labelledby="statusDropdown">
                                 <a class="dropdown-item" href="javascript: void(0);">
-                                    <span class="legend-circle bg-success me-2"></span>Available
+                                    <span class="legend-circle bg-success me-2"></span><?php echo $avaliable; ?>
                                 </a>
                                 <a class="dropdown-item" href="javascript: void(0);">
-                                    <span class="legend-circle bg-danger me-2"></span>Busy
+                                    <span class="legend-circle bg-danger me-2"></span><?php echo $busy; ?>
                                 </a>
                                 <a class="dropdown-item" href="javascript: void(0);">
-                                    <span class="legend-circle bg-warning me-2"></span>Away
+                                    <span class="legend-circle bg-warning me-2"></span><?php echo $away; ?>
                                 </a>
                                 <a class="dropdown-item" href="javascript: void(0);">
-                                    <span class="legend-circle bg-gray-500 me-2"></span>Appear offline
-                                </a>
-                                <hr class="dropdown-divider">
-                                <a class="dropdown-item" href="javascript: void(0);">
-                                    Reset status
+                                    <span class="legend-circle bg-gray-500 me-2"></span><?php echo $offline; ?>
                                 </a>
                             </div>
                         </div>
                         <!-- End Dropdown -->
 
-                        <a class="dropdown-item" href="javascript: void(0);">Profile & account</a>
-                        <a class="dropdown-item" href="javascript: void(0);">Settings</a>
+                        <a class="dropdown-item" href="/profile.php?usr=<?php echo $seu["userName"]; ?>"><?php echo $profile; ?></a>
 
                         <hr class="dropdown-divider">
 
-                        <a class="dropdown-item" href="javascript: void(0);">Sign out</a>
+                        <a class="dropdown-item" href="/signout.php"><?php echo $signout; ?></a>
                     </div>
                 </div>
             </div>
@@ -1317,8 +749,8 @@ include_once "./conf/entry.php";
         <div class="container-fluid">
 
             <!-- Title -->
-            <h1 class="h2">
-                Dashboard
+            <h1 class="h3">
+                <?php echo $home; ?>
             </h1>
 
             <div class="row">
@@ -1336,41 +768,19 @@ include_once "./conf/entry.php";
                                                 <!-- Title -->
                                                 <h5 class="d-flex align-items-center text-uppercase text-muted fw-semibold mb-2">
                                                     <span class="legend-circle-sm bg-success"></span>
-                                                    Income
+                                                    Registered Users
                                                 </h5>
 
                                                 <!-- Subtitle -->
                                                 <h2 class="mb-0">
-                                                    $3,240
+                                                    <?php echo $user_count; ?>
                                                 </h2>
 
                                                 <!-- Comment -->
                                                 <p class="fs-6 text-muted mb-0">
-                                                    No additional income
+                                                    Including online and offline users
                                                 </p>
                                             </div>
-
-                                            <span class="text-primary">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="32" width="32">
-                                                    <defs>
-                                                        <style>
-                                                            .a {
-                                                                fill: none;
-                                                                stroke: currentColor;
-                                                                stroke-linecap: round;
-                                                                stroke-linejoin: round;
-                                                                stroke-width: 1.5px;
-                                                            }
-                                                        </style>
-                                                    </defs>
-                                                    <title>cash-briefcase</title>
-                                                    <path class="a" d="M9.75,15.937c0,.932,1.007,1.688,2.25,1.688s2.25-.756,2.25-1.688S13.243,14.25,12,14.25s-2.25-.756-2.25-1.688,1.007-1.687,2.25-1.687,2.25.755,2.25,1.687" />
-                                                    <line class="a" x1="12" y1="9.75" x2="12" y2="10.875" />
-                                                    <line class="a" x1="12" y1="17.625" x2="12" y2="18.75" />
-                                                    <rect class="a" x="1.5" y="6.75" width="21" height="15" rx="1.5" ry="1.5" />
-                                                    <path class="a" d="M15.342,3.275A1.5,1.5,0,0,0,13.919,2.25H10.081A1.5,1.5,0,0,0,8.658,3.275L7.5,6.75h9Z" />
-                                                </svg>
-                                            </span>
                                         </div>
                                     </div> <!-- / .row -->
                                 </div>
@@ -2103,7 +1513,7 @@ include_once "./conf/entry.php";
                 <path stroke="currentColor" stroke-width="1.5" d="M18.1565 6.23828C18.4326 6.23828 18.6565 6.01442 18.6565 5.73828C18.6565 5.46214 18.4326 5.23828 18.1565 5.23828" />
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16.1347 1.83506C16.1409 1.62338 16.2152 1.41935 16.3466 1.25325C16.478 1.08716 16.6594 0.967851 16.8639 0.91304C17.0685 0.85823 17.2853 0.870838 17.4821 0.948992C17.6789 1.02715 17.8453 1.16668 17.9565 1.34689L18.551 2.30113C18.6493 2.45959 18.8042 2.57479 18.9842 2.62343C19.1643 2.67207 19.3561 2.65052 19.5209 2.56313L20.508 2.03729C20.6955 1.93854 20.9096 1.90249 21.1191 1.93443C21.3285 1.96638 21.5222 2.06463 21.6716 2.21476C21.8211 2.3649 21.9185 2.559 21.9495 2.76857C21.9805 2.97814 21.9435 3.19214 21.8439 3.37912L21.3171 4.37019C21.2295 4.53545 21.2077 4.72774 21.2561 4.90841C21.3045 5.08907 21.4195 5.24471 21.578 5.34404L22.5273 5.9411C22.7071 6.05324 22.8461 6.22006 22.924 6.41706C23.002 6.61406 23.0147 6.83085 22.9603 7.03561C22.9059 7.24036 22.7873 7.42229 22.6219 7.55467C22.4565 7.68705 22.253 7.7629 22.0413 7.7711L20.9235 7.80929C20.7371 7.816 20.5602 7.89324 20.4286 8.02539C20.297 8.15754 20.2205 8.33473 20.2145 8.52115L20.179 9.64113C20.1727 9.85281 20.0984 10.0568 19.967 10.2229C19.8357 10.389 19.6542 10.5083 19.4497 10.5631C19.2451 10.618 19.0284 10.6053 18.8315 10.5272C18.6347 10.449 18.4683 10.3095 18.3571 10.1293L17.762 9.17525C17.6638 9.0168 17.509 8.90157 17.3291 8.85289C17.1492 8.80422 16.9575 8.82572 16.7928 8.91305L15.8049 9.43908C15.6175 9.53784 15.4033 9.57389 15.1939 9.54194C14.9844 9.51 14.7908 9.41175 14.6413 9.26161C14.4918 9.11148 14.3944 8.91737 14.3634 8.7078C14.3324 8.49823 14.3694 8.28424 14.469 8.09725L14.9933 7.10534C15.0809 6.94007 15.1027 6.74778 15.0543 6.56712C15.0059 6.38645 14.8909 6.23081 14.7324 6.13148L13.7831 5.53748C13.6034 5.42533 13.4643 5.25851 13.3864 5.06151C13.3085 4.86452 13.2958 4.64772 13.3501 4.44296C13.4045 4.23821 13.5231 4.05628 13.6885 3.92391C13.8539 3.79153 14.0574 3.71567 14.2691 3.70748L15.3877 3.66909C15.5739 3.66238 15.7507 3.58515 15.8822 3.45302C16.0137 3.32089 16.0901 3.14374 16.0959 2.95743L16.1347 1.83506Z" />
             </svg>
-            Customize
+            <?php echo $ctm; ?>
         </a>
 
     </main> <!-- / main -->

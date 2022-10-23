@@ -41,4 +41,8 @@ if (!isset($_SESSION["usr"]) && $_SERVER["REQUEST_URI"] !== "/signin.php" && $_S
     header("Location: /signin.php");
     exit();
 }
+
+$seu = $_SESSION["usr"];
+$seu = json_decode($seu, true);
+$gravatar_hash = md5(strtolower(trim($seu["privTable"]["email"])));
 ?>
