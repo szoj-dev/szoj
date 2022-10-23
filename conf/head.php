@@ -11,16 +11,21 @@
         <meta name="description" content="<?php echo $config["szoj"]["description"]; ?>">
         <link rel="stylesheet" href="/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="/dist/css/bootstrap-theme.min.css">
-        <script src="/dist/js/tex-svg.js"></script>
         <!-- mathjax -->
-        <script type="text/x-mathjax-config">
-            MathJax.Hub.Config({
-                tex2jax: {
-                    inlineMath: [['$','$'], ['\\(','\\)']],
-                    processEscapes: true
-                }
-            });
+        <script>
+        MathJax = {
+            tex: {
+                inlineMath: [
+                    ['$', '$'],
+                    ['\\(', '\\)']
+                ]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
         </script>
+        <script src="/dist/js/tex-svg.js"></script>
         <script src="/dist/js/bootstrap.bundle.min.js"></script>
         <?php
     }

@@ -2,7 +2,7 @@
 /**
  * entry.php
  * (c) 2022 Shuzhou Liu
- * Code served under the MIT License
+ * Code served under the BY-ND 4.0 License
  * 
  * This file is part of the project "szoj".
  * 
