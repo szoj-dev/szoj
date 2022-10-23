@@ -83,4 +83,12 @@ $offline = "Offline";
 $setStatus = "Set Status";
 $profile = "Profile";
 $signout = "Sign Out";
+$registered_users = "Registered Users";
+$incl_ofon = "Including online and offline users";
+$search = "Search";
+$problemcnt = "Problem Count";
+$iatps = "Including all types of problems and premium problems";
+$balance = "Balance";
+$charge = "Charge";
+$charge_notice = "Note that charging is single-way";
 ?>

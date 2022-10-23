@@ -4,6 +4,10 @@ $res = mysqli_query($con, "SELECT COUNT(*) FROM `usr`");
 if (!$res) die("Error: Cannot get user count.");
 $row = mysqli_fetch_row($res);
 $user_count = $row[0];
+$res = mysqli_query($con, "SELECT COUNT(*) FROM `problemset`");
+if (!$res) die("Error: Cannot get problem count.");
+$row = mysqli_fetch_row($res);
+$problem_count = $row[0];
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $locale; ?>" data-theme="light" data-sidebar-behaviour="fixed" data-navigation-color="default" data-is-fluid="true">
@@ -33,6 +37,7 @@ $user_count = $row[0];
     <!-- Theme CSS -->
     <link rel="stylesheet" href="/dist/css/theme.bundle.css" id="stylesheetLTR" />
     <link rel="stylesheet" href="/dist/css/theme.rtl.bundle.css" id="stylesheetRTL" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google%20Sans" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap">
     <link rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap">
@@ -68,6 +73,11 @@ $user_count = $row[0];
             html.removeAttribute('dir');
         }
     </script>
+    <style>
+        money {
+            font-family: "Google Sans" !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -393,7 +403,7 @@ $user_count = $row[0];
                 <div class="input-group input-group-merge">
 
                     <!-- Input -->
-                    <input type="text" class="form-control bg-light-green border-light-green w-250px" placeholder="Search..." aria-label="Search for any term">
+                    <input type="text" class="form-control bg-light-green border-light-green w-250px" placeholder="<?php echo $search; ?>..." aria-label="Search for any term">
 
                     <!-- Button -->
                     <span class="input-group-text bg-light-green border-light-green p-0">
@@ -768,7 +778,7 @@ $user_count = $row[0];
                                                 <!-- Title -->
                                                 <h5 class="d-flex align-items-center text-uppercase text-muted fw-semibold mb-2">
                                                     <span class="legend-circle-sm bg-success"></span>
-                                                    Registered Users
+                                                    <?php echo $registered_users; ?>
                                                 </h5>
 
                                                 <!-- Subtitle -->
@@ -778,7 +788,7 @@ $user_count = $row[0];
 
                                                 <!-- Comment -->
                                                 <p class="fs-6 text-muted mb-0">
-                                                    Including online and offline users
+                                                    <?php echo $incl_ofon; ?>
                                                 </p>
                                             </div>
                                         </div>
@@ -798,33 +808,19 @@ $user_count = $row[0];
                                                 <!-- Title -->
                                                 <h5 class="d-flex align-items-center text-uppercase text-muted fw-semibold mb-2">
                                                     <span class="legend-circle-sm bg-danger"></span>
-                                                    Expense
+                                                    <?php echo $problemcnt; ?>
                                                 </h5>
 
                                                 <!-- Subtitle -->
                                                 <h2 class="mb-0">
-                                                    $1,500
+                                                    <?php echo $problem_count; ?>
                                                 </h2>
 
                                                 <!-- Comment -->
                                                 <p class="fs-6 text-muted mb-0 text-truncate">
-                                                    + $6.50 bank charges fee
+                                                    <?php echo $iatps; ?>
                                                 </p>
                                             </div>
-
-                                            <span class="text-primary">
-                                                <svg viewBox="0 0 24 24" height="32" width="32" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M18.75,14.25H16.717a1.342,1.342,0,0,0-.5,2.587l2.064.826a1.342,1.342,0,0,1-.5,2.587H15.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                                    <path d="M17.25 14.25L17.25 13.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                                    <path d="M17.25 21L17.25 20.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                                    <path d="M11.250 17.250 A6.000 6.000 0 1 0 23.250 17.250 A6.000 6.000 0 1 0 11.250 17.250 Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                                    <path d="M3.75 14.25L8.25 14.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                                    <path d="M8.25 14.25L8.25 6.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                                    <path d="M11.25 9.75L11.25 8.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                                    <path d="M5.25 14.25L5.25 9.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                                    <path d="M7.5,20.25H2.25a1.43,1.43,0,0,1-1.5-1.415V2.335A1.575,1.575,0,0,1,2.25.75H12.879a1.5,1.5,0,0,1,1.06.439l2.872,2.872a1.5,1.5,0,0,1,.439,1.06V7.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                                </svg>
-                                            </span>
                                         </div>
                                     </div> <!-- / .row -->
                                 </div>
@@ -844,85 +840,27 @@ $user_count = $row[0];
 
                                             <!-- Title -->
                                             <h5 class="text-uppercase text-muted fw-semibold mb-2">
-                                                Total
+                                                <?php echo $balance; ?>
                                             </h5>
 
                                             <!-- Subtitle -->
                                             <h2 class="mb-0">
-                                                $74,925
+                                                <money><?php echo $seu["privTable"]["balance"]; ?></money>
                                             </h2>
 
                                             <!-- Comment -->
                                             <p class="fs-6 text-muted mb-0 text-truncate">
 
                                                 <!-- Badge -->
-                                                <span class="badge text-bg-success-soft fs-6 fw-bold mb-n1">
+                                                <span class="badge text-bg-success-soft fs-6 fw-bold mb-n1" onclick="window.location.href='/charge.php';">
                                                     <svg viewBox="0 0 24 24" height="10" width="10" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M23.25 12.75L23.25 6 16.5 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
                                                         <path d="M23.25,6l-7.939,7.939a1.5,1.5,0,0,1-2.122,0l-3.128-3.128a1.5,1.5,0,0,0-2.122,0L.75,18" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
                                                     </svg>
-                                                    12%
+                                                    <?php echo $charge; ?>
                                                 </span>
-                                                from $65,934
+                                                <?php echo $charge_notice; ?>
                                             </p>
-                                        </div>
-
-                                        <div class="col-6">
-
-                                            <!-- Chart -->
-                                            <div class="chart-container h-70px">
-                                                <canvas id="incomeChart"></canvas>
-                                            </div>
-                                        </div>
-                                    </div> <!-- / .row -->
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <!-- Card -->
-                            <div class="card border-0">
-                                <div class="card-body">
-                                    <div class="row justify-content-between">
-                                        <div class="col">
-
-                                            <!-- Title -->
-                                            <h5 class="text-uppercase text-muted fw-semibold mb-2 d-flex align-items-center">
-                                                Pageviews
-
-                                                <!-- Icon -->
-                                                <a href="javascript: void(0);" class="ms-2 text-secondary" data-bs-toggle="tooltip" title="Pageviews is a metric defined as the total number of pages viewed.">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="14" width="14">
-                                                        <path d="M12,0A12,12,0,1,0,24,12,12,12,0,0,0,12,0Zm.25,5a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,12.25,5ZM14.5,18.5h-4a1,1,0,0,1,0-2h.75a.25.25,0,0,0,.25-.25v-4.5a.25.25,0,0,0-.25-.25H10.5a1,1,0,0,1,0-2h1a2,2,0,0,1,2,2v4.75a.25.25,0,0,0,.25.25h.75a1,1,0,0,1,0,2Z" style="fill: currentColor" />
-                                                    </svg>
-                                                </a>
-                                            </h5>
-
-                                            <!-- Subtitle -->
-                                            <h2 class="mb-0">
-                                                123,598
-                                            </h2>
-
-                                            <!-- Comment -->
-                                            <p class="fs-6 text-muted mb-0">
-
-                                                <!-- Badge -->
-                                                <span class="badge text-bg-danger-soft fs-6 fw-bold mb-n1">
-                                                    <svg viewBox="0 0 24 24" height="10" width="10" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M23.25 11.25L23.25 18 16.5 18" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                                        <path d="M23.25,18l-7.939-7.939a1.5,1.5,0,0,0-2.122,0l-3.128,3.128a1.5,1.5,0,0,1-2.122,0L.75,6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                                    </svg>
-                                                    9.2%
-                                                </span>
-                                                from 134,969
-                                            </p>
-                                        </div>
-                                        <div class="col-5">
-
-                                            <!-- Chart -->
-                                            <div class="chart-container h-65px">
-                                                <canvas id="pageViewsChart"></canvas>
-                                            </div>
                                         </div>
                                     </div> <!-- / .row -->
                                 </div>

@@ -83,4 +83,12 @@ $offline = "离线";
 $setStatus = "设置状态";
 $profile = "个人资料";
 $signout = "注销";
+$registered_users = "注册用户数";
+$incl_ofon = "包括在线用户和离线用户";
+$search = "搜索";
+$problemcnt = "题目数";
+$iatps = "包含所有题目和尊享题目";
+$balance = "余额";
+$charge = "充值";
+$charge_notice = "注意充值是不可逆的";
 ?>
