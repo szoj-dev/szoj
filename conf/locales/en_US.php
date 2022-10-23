@@ -10,7 +10,7 @@
  */
 
 $home = "Home";
-$signin = "Signin";
+$signin = "Sign In";
 $register = "Register";
 $announcements = "Announcements";
 $problems = "Problemset";
@@ -20,4 +20,8 @@ $userRank = "Rank";
 $donate = "Donate";
 $about = "About";
 $countdown = "Countdown";
+$username = "Username";
+$password = "Password";
+$unotfound = "Username not found.";
+$pincorrect = "Password incorrect.";
 ?>

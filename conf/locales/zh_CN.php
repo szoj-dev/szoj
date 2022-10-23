@@ -20,4 +20,8 @@ $userRank = "排名";
 $donate = "捐赠";
 $about = "关于";
 $countdown = "倒计时";
+$username = "用户名";
+$password = "密码";
+$unotfound = "用户名不存在。";
+$pincorrect = "密码错误。";
 ?>

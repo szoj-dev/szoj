@@ -1,0 +1,32 @@
+{
+    "signin": true,
+    "contest": {
+        "part": true,
+        "pset": true,
+        "pmng": true
+    },
+    "group": {
+        "create": true,
+        "join": true,
+        "invite": true,
+        "manage": true
+    },
+    "problem": {
+        "allow": "[a-zA-Z]",
+        "own": {
+            "edit": true,
+            "delete": true,
+            "judge": true,
+            "data": true
+        },
+        "all": {
+            "edit": true,
+            "delete": true,
+            "judge": true,
+            "data": true
+        }
+    },
+    "user": {
+        "manage": true
+    }
+}

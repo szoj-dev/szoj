@@ -27,4 +27,18 @@ if ($locale === null) {
     $locale = $config["locale"]["default"];
     $_SESSION["locale"] = $locale;
 }
+
+include_once "./conf/locales/$locale.php"; // Load locale module
+
+if ($config["szoj"]["https"] === true) {
+    if ($_SERVER["HTTPS"] !== "on") {
+        header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+        exit();
+    }
+}
+
+if (!isset($_SESSION["usr"]) && $_SERVER["REQUEST_URI"] !== "/signin.php" && $_SERVER["REQUEST_URI"] !== "/register.php") {
+    header("Location: /signin.php");
+    exit();
+}
 ?>
