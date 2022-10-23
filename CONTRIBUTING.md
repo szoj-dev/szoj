@@ -32,4 +32,4 @@ This project and everyone participating in it is governed by the [SZOJ Code of C
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under its [MIT License](LICENSE).
+By contributing, you agree that your contributions will be licensed under its [CC BY 4.0 License](LICENSE).
